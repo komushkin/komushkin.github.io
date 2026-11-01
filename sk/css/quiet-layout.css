@@ -1,0 +1,42 @@
+/* Точечная чистка существующей страницы; функциональные блоки сохранены. */
+.hero{padding-bottom:36px}.hero .actions{flex-wrap:wrap;gap:16px 24px}
+.hero-location-link{display:inline-flex;align-items:center;min-height:44px;font-size:13px;text-decoration:underline;text-underline-offset:5px;color:var(--green)}
+.hero .mobile-hero-name{display:block;font:22px/1.4 var(--display);letter-spacing:-.5px;margin:0 0 16px;color:var(--green)}
+.hero .eyebrow{display:block;margin-bottom:16px}
+#instagram{display:block;max-width:1280px;padding-top:48px;padding-bottom:48px}#instagram>div:last-child{max-width:740px;padding-top:0;display:block}#instagram h2{margin-bottom:20px}#instagram .button{margin-right:12px;margin-top:8px}
+.menu-suggestions{margin:12px 0 24px;border-block:1px solid var(--line);min-width:0}
+.menu-suggestions summary{font:12px/1.7 var(--font);padding:14px 28px 14px 0;position:relative;cursor:pointer;list-style:none;color:var(--ink);border:0}
+.menu-suggestions summary::-webkit-details-marker{display:none}.menu-suggestions summary:after{content:'+';position:absolute;right:6px;top:12px;font-size:19px}.menu-suggestions[open] summary:after{content:'−'}.menu-suggestions summary span{color:var(--accent)}
+.menu-suggestions-content{padding:6px 0 20px}.menu-suggestions .mood-picker{margin-bottom:16px}.menu-suggestions .quick-filters{justify-content:flex-start}.menu-search-tools{margin-bottom:18px}.menu-suggestions .mood-options{flex-wrap:wrap}
+.guest-invitation .guest-menu-link{flex-shrink:0}.guest-invitation h2{font-size:14px}
+@media(max-width:760px){
+  .hero .eyebrow{font-size:8px;letter-spacing:1px;line-height:1.6}.hero .mobile-hero-name{font-size:32px}
+  .hero .actions{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:0}.hero .actions .button{font-size:12px;padding:12px 18px}.hero-location-link{font-size:12px}
+  #instagram>div:last-child{display:block}#instagram h2{margin-bottom:16px}#instagram>div:last-child>p{margin-bottom:12px}#instagram .button{display:inline-flex;padding:12px;font-size:11px}
+  .menu-suggestions summary{font-size:11px}.menu-suggestions summary span{display:block}.menu-suggestions .mood-options{grid-template-columns:repeat(2,minmax(0,1fr))}.menu-suggestions .mood-options button{font-size:11px;padding:10px}.menu-suggestions .quick-filters{flex-wrap:wrap}
+  .guest-invitation{gap:0;padding-top:12px;padding-bottom:12px}.guest-invitation h2{font-size:12px}.guest-invitation .guest-menu-link{min-height:44px}
+}
+
+/* Один трек, две равные группы: ровный стык на translateX(-50%).
+   Расстояние между фразами и на стыке задаётся только --ticker-gap. */
+#main{overflow-x:clip}
+.ticker{--ticker-gap:36px;position:relative;display:block;width:100%;max-width:100%;overflow:hidden;padding:17px 0;gap:0;white-space:nowrap;isolation:isolate;mask-image:linear-gradient(to right,transparent,#000 24px,#000 calc(100% - 24px),transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 24px,#000 calc(100% - 24px),transparent)}
+.ticker-track{display:flex;flex-wrap:nowrap;align-items:center;gap:0;width:max-content;max-width:none;animation:ticker-loop 38s linear infinite normal;will-change:transform;pointer-events:none;user-select:none}
+.ticker-group{display:flex;flex:0 0 auto;flex-wrap:nowrap;align-items:center;justify-content:space-around;gap:var(--ticker-gap);width:max-content;min-width:100vw;padding:0 var(--ticker-gap) 0 0;white-space:nowrap}
+.ticker-group .ticker-item{display:inline-block;flex:0 0 auto;white-space:nowrap;line-height:1.6}
+.ticker-item>span{display:inline-block;vertical-align:middle;margin-left:14px;font-size:16px;font-weight:400;line-height:1}
+@keyframes ticker-loop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:760px){.ticker{padding:12px 0;font-size:9px;letter-spacing:1px}}
+@media(prefers-reduced-motion:reduce){
+  .ticker{mask-image:none;-webkit-mask-image:none}
+  .ticker-track{width:100%;animation:none;transform:none;will-change:auto;justify-content:center}
+  .ticker-group{flex:0 1 auto;width:auto;min-width:0;padding:0;gap:0;justify-content:center}
+  .ticker-group+.ticker-group,.ticker-item~.ticker-item,.ticker-item>span{display:none}
+}
+
+/* На телефоне оставляем компактную стрелку с удобной областью нажатия. */
+@media(max-width:760px){
+  .to-top{width:44px;min-width:44px;height:44px;padding:0;border-radius:50%}
+  .to-top>.mobile-only{display:none}
+  .to-top>.mobile-decoration{display:block!important;font-size:23px;line-height:1}
+}
